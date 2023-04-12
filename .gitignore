@@ -1,0 +1,4 @@
+node_modules
+.env
+# we are ignoring env for as not to expose them wherever we host the code and wherever w ehost it we will set up the requ
+# ired environment varibles there itself again
