@@ -1,5 +1,5 @@
 const mongoose=require('mongoose')
-const link="mongodb+srv://ayush052sharma:9811933794@cluster0.rrahjdv.mongodb.net/task-manager-api?retryWrites=true&w=majority";
+const link=process.env.MONGODB_URL;
 mongoose.connect(link)
     .then(function(result){
         console.log("connected");
