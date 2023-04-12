@@ -165,14 +165,19 @@ router.delete('/users/me/avatar',auth,async (req,res) => {
 })
 
 router.get('/users/:id/avatar',async (req,res) => {
+    
     const user = await User.findById(req.params.id);
-    if(!user || !user.avatar)
-    throw new Error();
+    try{
+     if(!user || !user.avatar)
+    throw new Error('no user exists ir no corresponding avatar exists');
+    }
+    catch(error){
+      return  res.status(400).send({error:error.message});
+    }
+   
 
     res.set('Content-Type','image/png')
     res.send(user.avatar);
-},(error,req,res,next)=>{
-    res.status(400).send({error:error.message});
 })
 
 
